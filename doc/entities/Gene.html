@@ -1,0 +1,1156 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>pgnc-api documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">pgnc-api documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content entity">
+                   <div class="content-data">
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Entities</li>
+  <li class="breadcrumb-item" >Gene</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" 
+                class="nav-link"
+                class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" 
+                class="nav-link"
+                
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info">
+        <p class="comment">
+            <h3>File</h3>
+        </p>
+        <p class="comment">
+            <code>src/gene/gene.entity.ts</code>
+        </p>
+
+
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>Gene entity class to store gene related information.</p>
+
+            </p>
+
+
+            <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier"></span>
+                                <a href="#createDate" >createDate</a>
+                            </li>
+                            <li>
+                                    <span class="modifier"></span>
+                                <a href="#creator" >creator</a>
+                            </li>
+                            <li>
+                                    <span class="modifier"></span>
+                                <a href="#editor" >editor</a>
+                            </li>
+                            <li>
+                                    <span class="modifier"></span>
+                                <a href="#geneLocations" >geneLocations</a>
+                            </li>
+                            <li>
+                                    <span class="modifier"></span>
+                                <a href="#geneLocusTypes" >geneLocusTypes</a>
+                            </li>
+                            <li>
+                                    <span class="modifier"></span>
+                                <a href="#geneNames" >geneNames</a>
+                            </li>
+                            <li>
+                                    <span class="modifier"></span>
+                                <a href="#geneNotes" >geneNotes</a>
+                            </li>
+                            <li>
+                                    <span class="modifier"></span>
+                                <a href="#geneReplacements" >geneReplacements</a>
+                            </li>
+                            <li>
+                                    <span class="modifier"></span>
+                                <a href="#genesReplaced" >genesReplaced</a>
+                            </li>
+                            <li>
+                                    <span class="modifier"></span>
+                                <a href="#geneSymbols" >geneSymbols</a>
+                            </li>
+                            <li>
+                                    <span class="modifier"></span>
+                                <a href="#geneXrefs" >geneXrefs</a>
+                            </li>
+                            <li>
+                                    <span class="modifier"></span>
+                                <a href="#id" >id</a>
+                            </li>
+                            <li>
+                                    <span class="modifier"></span>
+                                <a href="#mod_id" >mod_id</a>
+                            </li>
+                            <li>
+                                    <span class="modifier"></span>
+                                <a href="#modDate" >modDate</a>
+                            </li>
+                            <li>
+                                    <span class="modifier"></span>
+                                <a href="#species" >species</a>
+                            </li>
+                            <li>
+                                    <span class="modifier"></span>
+                                <a href="#status" >status</a>
+                            </li>
+                            <li>
+                                    <span class="modifier"></span>
+                                <a href="#withdrawnDate" >withdrawnDate</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+            <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="createDate"></a>
+                    <span class="name">
+                            <span class="modifier"></span>
+                        <span ><b>createDate</b></span>
+                        <a href="#createDate"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date" target="_blank" >Date</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <b>Decorators : </b>
+                        <br />
+                        <code>
+                            @CreateDateColumn()<br />
+                        </code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="57" class="link-to-prism">src/gene/gene.entity.ts:57</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Date when the gene entry was created. Auto-generated by the database on insert.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="creator"></a>
+                    <span class="name">
+                            <span class="modifier"></span>
+                        <span ><b>creator</b></span>
+                        <a href="#creator"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../entitys/User.html" target="_self" >User</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <b>Decorators : </b>
+                        <br />
+                        <code>
+                            @ManyToOne(undefined, user &#x3D;&gt; user.genesCreated)<br />
+                        </code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="50" class="link-to-prism">src/gene/gene.entity.ts:50</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>The person who first created the gene entry</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="editor"></a>
+                    <span class="name">
+                            <span class="modifier"></span>
+                        <span ><b>editor</b></span>
+                        <a href="#editor"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../entitys/User.html" target="_self" >User</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <b>Decorators : </b>
+                        <br />
+                        <code>
+                            @ManyToOne(undefined, user &#x3D;&gt; user.genesEdited)<br />
+                        </code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="64" class="link-to-prism">src/gene/gene.entity.ts:64</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>The person who last edited the gene entry.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="geneLocations"></a>
+                    <span class="name">
+                            <span class="modifier"></span>
+                        <span ><b>geneLocations</b></span>
+                        <a href="#geneLocations"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>GeneLocation[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <b>Decorators : </b>
+                        <br />
+                        <code>
+                            @OneToMany(undefined, geneLocation &#x3D;&gt; geneLocation.gene, {eager: true})<br />
+                        </code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="155" class="link-to-prism">src/gene/gene.entity.ts:155</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="geneLocusTypes"></a>
+                    <span class="name">
+                            <span class="modifier"></span>
+                        <span ><b>geneLocusTypes</b></span>
+                        <a href="#geneLocusTypes"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>GeneLocusType[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <b>Decorators : </b>
+                        <br />
+                        <code>
+                            @OneToMany(undefined, geneLocusType &#x3D;&gt; geneLocusType.gene, {eager: true})<br />
+                        </code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="130" class="link-to-prism">src/gene/gene.entity.ts:130</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="geneNames"></a>
+                    <span class="name">
+                            <span class="modifier"></span>
+                        <span ><b>geneNames</b></span>
+                        <a href="#geneNames"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>GeneName[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <b>Decorators : </b>
+                        <br />
+                        <code>
+                            @OneToMany(undefined, geneName &#x3D;&gt; geneName.gene, {eager: true})<br />
+                        </code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="125" class="link-to-prism">src/gene/gene.entity.ts:125</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Gene names of the gene. A gene can have multiple gene names but only one is approved</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="geneNotes"></a>
+                    <span class="name">
+                            <span class="modifier"></span>
+                        <span ><b>geneNotes</b></span>
+                        <a href="#geneNotes"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>GeneNote[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <b>Decorators : </b>
+                        <br />
+                        <code>
+                            @OneToMany(undefined, geneNote &#x3D;&gt; geneNote.gene, {eager: true})<br />
+                        </code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="133" class="link-to-prism">src/gene/gene.entity.ts:133</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="geneReplacements"></a>
+                    <span class="name">
+                            <span class="modifier"></span>
+                        <span ><b>geneReplacements</b></span>
+                        <a href="#geneReplacements"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>GeneReplacement[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <b>Decorators : </b>
+                        <br />
+                        <code>
+                            @OneToMany(undefined, geneReplacement &#x3D;&gt; geneReplacement.previousGene, {eager: true})<br />
+                        </code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="140" class="link-to-prism">src/gene/gene.entity.ts:140</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="genesReplaced"></a>
+                    <span class="name">
+                            <span class="modifier"></span>
+                        <span ><b>genesReplaced</b></span>
+                        <a href="#genesReplaced"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>GeneReplacement[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <b>Decorators : </b>
+                        <br />
+                        <code>
+                            @OneToMany(undefined, geneReplacement &#x3D;&gt; geneReplacement.replacementGene, {eager: true})<br />
+                        </code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="147" class="link-to-prism">src/gene/gene.entity.ts:147</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="geneSymbols"></a>
+                    <span class="name">
+                            <span class="modifier"></span>
+                        <span ><b>geneSymbols</b></span>
+                        <a href="#geneSymbols"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>GeneSymbol[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <b>Decorators : </b>
+                        <br />
+                        <code>
+                            @OneToMany(undefined, geneSymbol &#x3D;&gt; geneSymbol.gene, {eager: true})<br />
+                        </code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="118" class="link-to-prism">src/gene/gene.entity.ts:118</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Gene symbols of the gene. A gene can have multiple gene symbols but only one is approved</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="geneXrefs"></a>
+                    <span class="name">
+                            <span class="modifier"></span>
+                        <span ><b>geneXrefs</b></span>
+                        <a href="#geneXrefs"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>GeneXref[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <b>Decorators : </b>
+                        <br />
+                        <code>
+                            @OneToMany(undefined, geneXref &#x3D;&gt; geneXref.gene, {eager: true})<br />
+                        </code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="150" class="link-to-prism">src/gene/gene.entity.ts:150</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="id"></a>
+                    <span class="name">
+                            <span class="modifier"></span>
+                        <span ><b>id</b></span>
+                        <a href="#id"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <b>Decorators : </b>
+                        <br />
+                        <code>
+                            @PrimaryGeneratedColumn()<br />
+                        </code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="33" class="link-to-prism">src/gene/gene.entity.ts:33</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Unique identifier of the gene. Auto-incremented by the database on insert.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="mod_id"></a>
+                    <span class="name">
+                            <span class="modifier"></span>
+                        <span ><b>mod_id</b></span>
+                        <a href="#mod_id"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <b>Decorators : </b>
+                        <br />
+                        <code>
+                            @Column({type: &#x27;varchar&#x27;, length: 16, nullable: true, unique: true})<br />
+                        </code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="104" class="link-to-prism">src/gene/gene.entity.ts:104</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>The gene identifier in the source database. Mod stands for model organism database.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="modDate"></a>
+                    <span class="name">
+                            <span class="modifier"></span>
+                        <span ><b>modDate</b></span>
+                        <a href="#modDate"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date" target="_blank" >Date</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <b>Decorators : </b>
+                        <br />
+                        <code>
+                            @UpdateDateColumn()<br />
+                        </code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="71" class="link-to-prism">src/gene/gene.entity.ts:71</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Date when the gene entry was last modified. Auto-generated by the database on update.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="species"></a>
+                    <span class="name">
+                            <span class="modifier"></span>
+                        <span ><b>species</b></span>
+                        <a href="#species"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../entitys/Species.html" target="_self" >Species</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <b>Decorators : </b>
+                        <br />
+                        <code>
+                            @ManyToOne(undefined, species &#x3D;&gt; species.genes, {eager: true, nullable: false})<br />
+                        </code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="43" class="link-to-prism">src/gene/gene.entity.ts:43</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Gene name of the gene.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="status"></a>
+                    <span class="name">
+                            <span class="modifier"></span>
+                        <span ><b>status</b></span>
+                        <a href="#status"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <b>Decorators : </b>
+                        <br />
+                        <code>
+                            @Column({type: &#x27;enum&#x27;, enum: geneStatus, nullable: false, default: undefined})<br />
+                        </code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="92" class="link-to-prism">src/gene/gene.entity.ts:92</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>The status of the gene. Default is internal and must be changed
+to public before the gene can be viewed by the public. The value
+is one of the geneStatus enum values.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="withdrawnDate"></a>
+                    <span class="name">
+                            <span class="modifier"></span>
+                        <span ><b>withdrawnDate</b></span>
+                        <a href="#withdrawnDate"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date" target="_blank" >Date</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <b>Decorators : </b>
+                        <br />
+                        <code>
+                            @DeleteDateColumn()<br />
+                        </code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="78" class="link-to-prism">src/gene/gene.entity.ts:78</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>The date the gene was soft deleted - status should therefore be withdrawn.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</section>
+    </div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {
+  Entity,
+  PrimaryGeneratedColumn,
+  Column,
+  CreateDateColumn,
+  ManyToOne,
+  UpdateDateColumn,
+  DeleteDateColumn,
+  OneToMany,
+} from &#x27;typeorm&#x27;;
+import { geneStatus } from &#x27;./enum/gene-status.enum&#x27;;
+import { User } from &#x27;src/user/user.entity&#x27;;
+import { Species } from &#x27;src/species/species.entity&#x27;;
+// import { GeneHistory } from &#x27;src/gene-history/gene-history.entity&#x27;;
+import { GeneSymbol } from &#x27;src/gene-symbol/gene-symbol.entity&#x27;;
+import { GeneName } from &#x27;src/gene-name/gene-name.entity&#x27;;
+import { GeneLocusType } from &#x27;src/gene-locus-type/gene-locus-type.entity&#x27;;
+import { GeneNote } from &#x27;src/gene-note/gene-note.entity&#x27;;
+import { GeneReplacement } from &#x27;src/gene-replacement/gene-replacement.entity&#x27;;
+import { GeneXref } from &#x27;src/gene-xref/gene-xref.entity&#x27;;
+import { GeneLocation } from &#x27;src/gene-location/gene-location.entity&#x27;;
+
+/**
+ * Gene entity class to store gene related information.
+ */
+@Entity()
+export class Gene {
+  /**
+   * Unique identifier of the gene. Auto-incremented by the database on insert.
+   * @type {number}
+   */
+  @PrimaryGeneratedColumn()
+  id: number;
+
+  /**
+   * Gene name of the gene.
+   * @type {Species}
+   */
+  @ManyToOne(() &#x3D;&gt; Species, (species) &#x3D;&gt; species.genes, {
+    eager: true,
+    nullable: false,
+  })
+  species: Species;
+
+  /**
+   * The person who first created the gene entry
+   * @type {User}
+   */
+  @ManyToOne(() &#x3D;&gt; User, (user) &#x3D;&gt; user.genesCreated)
+  creator: User;
+
+  /**
+   * Date when the gene entry was created. Auto-generated by the database on insert.
+   * @type {Date}
+   */
+  @CreateDateColumn()
+  createDate: Date;
+
+  /**
+   * The person who last edited the gene entry.
+   * @type {User}
+   */
+  @ManyToOne(() &#x3D;&gt; User, (user) &#x3D;&gt; user.genesEdited)
+  editor: User;
+
+  /**
+   * Date when the gene entry was last modified. Auto-generated by the database on update.
+   * @type {Date}
+   */
+  @UpdateDateColumn()
+  modDate: Date;
+
+  /**
+   * The date the gene was soft deleted - status should therefore be withdrawn.
+   * @type {Date}
+   */
+  @DeleteDateColumn()
+  withdrawnDate: Date;
+
+  /**
+   * The status of the gene. Default is internal and must be changed
+   * to public before the gene can be viewed by the public. The value
+   * is one of the geneStatus enum values.
+   * @type {geneStatus}
+   */
+  @Column({
+    type: &#x27;enum&#x27;,
+    enum: geneStatus,
+    nullable: false,
+    default: geneStatus.INTERNAL,
+  })
+  status: string;
+
+  /**
+   * The gene identifier in the source database. Mod stands for model organism database.
+   * @type {string}
+   */
+  @Column({
+    type: &#x27;varchar&#x27;,
+    length: 16,
+    nullable: true,
+    unique: true,
+  })
+  mod_id: string;
+
+  /**
+   * Modifications to the gene entry are recorded in this table.
+   * @type {GeneHistory}
+   */
+  // @OneToMany(() &#x3D;&gt; GeneHistory, (geneHistory) &#x3D;&gt; geneHistory.gene)
+  // geneHistories: GeneHistory[];
+
+  /**
+   * Gene symbols of the gene. A gene can have multiple gene symbols but only one is approved
+   * @type {GeneSymbol}
+   */
+  @OneToMany(() &#x3D;&gt; GeneSymbol, (geneSymbol) &#x3D;&gt; geneSymbol.gene, { eager: true })
+  geneSymbols: GeneSymbol[];
+
+  /**
+   * Gene names of the gene. A gene can have multiple gene names but only one is approved
+   * @type {GeneName}
+   */
+  @OneToMany(() &#x3D;&gt; GeneName, (geneName) &#x3D;&gt; geneName.gene, { eager: true })
+  geneNames: GeneName[];
+
+  @OneToMany(() &#x3D;&gt; GeneLocusType, (geneLocusType) &#x3D;&gt; geneLocusType.gene, {
+    eager: true,
+  })
+  geneLocusTypes: GeneLocusType[];
+
+  @OneToMany(() &#x3D;&gt; GeneNote, (geneNote) &#x3D;&gt; geneNote.gene, { eager: true })
+  geneNotes: GeneNote[];
+
+  @OneToMany(
+    () &#x3D;&gt; GeneReplacement,
+    (geneReplacement) &#x3D;&gt; geneReplacement.previousGene,
+    { eager: true },
+  )
+  geneReplacements: GeneReplacement[];
+
+  @OneToMany(
+    () &#x3D;&gt; GeneReplacement,
+    (geneReplacement) &#x3D;&gt; geneReplacement.replacementGene,
+    { eager: true },
+  )
+  genesReplaced: GeneReplacement[];
+
+  @OneToMany(() &#x3D;&gt; GeneXref, (geneXref) &#x3D;&gt; geneXref.gene, { eager: true })
+  geneXrefs: GeneXref[];
+
+  @OneToMany(() &#x3D;&gt; GeneLocation, (geneLocation) &#x3D;&gt; geneLocation.gene, {
+    eager: true,
+  })
+  geneLocations: GeneLocation[];
+}
+</code></pre>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'entity';
+            var COMPODOC_CURRENT_PAGE_URL = 'Gene.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>
