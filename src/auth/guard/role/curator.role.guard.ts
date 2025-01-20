@@ -58,7 +58,7 @@ export class CuratorRoleGuard extends AccessTokenGuard {
     for (const role of user.roles) {
       if (
         [roleTypes.CURATOR, roleTypes.ADMIN, roleTypes.MASTER].includes(
-          role.name as roleTypes,
+          role.role as roleTypes,
         )
       ) {
         return true;

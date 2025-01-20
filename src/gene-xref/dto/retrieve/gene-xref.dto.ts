@@ -43,15 +43,6 @@ export class GeneXrefDto {
   @Expose()
   creationDate: Date;
 
-  @IsNotEmpty()
-  @IsDate()
-  @ApiProperty({
-    description: 'The modification date of the gene xref',
-    example: '2021-07-21T00:00:00.000Z',
-  })
-  @Expose()
-  modDate: Date;
-
   @IsDate()
   @ApiPropertyOptional({
     description: 'The withdrawal date of the gene xref',

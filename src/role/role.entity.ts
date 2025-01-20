@@ -23,7 +23,7 @@ export class Role {
     default: roleName.USER,
     unique: true,
   })
-  name: string;
+  role: string;
 
   /**
    * Users with this role. Many-to-many relationship. Cascade on delete.

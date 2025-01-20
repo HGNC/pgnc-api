@@ -7,6 +7,7 @@ import {
   UpdateDateColumn,
   DeleteDateColumn,
   OneToMany,
+  JoinColumn,
 } from 'typeorm';
 import { geneStatus } from './enum/gene-status.enum';
 import { User } from 'src/user/user.entity';
@@ -40,6 +41,7 @@ export class Gene {
     eager: true,
     nullable: false,
   })
+  @JoinColumn({ name: 'taxon_id' })
   species: Species;
 
   /**
@@ -54,7 +56,7 @@ export class Gene {
    * @type {Date}
    */
   @CreateDateColumn()
-  createDate: Date;
+  creationDate: Date;
 
   /**
    * The person who last edited the gene entry.
@@ -90,18 +92,6 @@ export class Gene {
     default: geneStatus.INTERNAL,
   })
   status: string;
-
-  /**
-   * The gene identifier in the source database. Mod stands for model organism database.
-   * @type {string}
-   */
-  @Column({
-    type: 'varchar',
-    length: 16,
-    nullable: true,
-    unique: true,
-  })
-  mod_id: string;
 
   /**
    * Modifications to the gene entry are recorded in this table.

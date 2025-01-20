@@ -51,6 +51,7 @@ export class GeneService {
       if (error.name === 'EntityNotFoundError') {
         throw new NotFoundException(`Gene with id ${id} not found`);
       } else {
+        console.error(error);
         throw error;
       }
     }

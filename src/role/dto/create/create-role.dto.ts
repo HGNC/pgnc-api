@@ -16,5 +16,5 @@ export class CreateRoleDto {
     description: 'The name of the role',
     example: 'user',
   })
-  name: roleName;
+  role: roleName;
 }

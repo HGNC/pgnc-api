@@ -59,7 +59,7 @@ export class MasterRoleGuard extends AccessTokenGuard implements CanActivate {
     const userId: number = request[REQUEST_USER_KEY].sub;
     const user = await this.userService.findById(userId);
     for (const role of user.roles) {
-      if (role.name === roleTypes.MASTER) {
+      if (role.role === roleTypes.MASTER) {
         return true;
       }
     }
