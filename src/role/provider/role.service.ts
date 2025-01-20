@@ -31,7 +31,7 @@ export class RoleService {
   public async findMultiple(roles: string[]): Promise<Role[]> {
     const results = await this.roleRepository.find({
       where: {
-        name: In(roles),
+        role: In(roles),
       },
     });
     return results;

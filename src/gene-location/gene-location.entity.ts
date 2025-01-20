@@ -10,7 +10,6 @@ import {
   JoinColumn,
   ManyToOne,
   PrimaryColumn,
-  UpdateDateColumn,
 } from 'typeorm';
 
 @Entity({ name: 'gene_has_location' })
@@ -47,9 +46,6 @@ export class GeneLocation {
 
   @CreateDateColumn()
   creationDate: Date;
-
-  @UpdateDateColumn()
-  modDate?: Date;
 
   @DeleteDateColumn()
   withdrawnDate?: Date;

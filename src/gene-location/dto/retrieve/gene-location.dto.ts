@@ -17,9 +17,6 @@ export class GeneLocationDto {
   creationDate: Date;
 
   @Expose()
-  modDate: Date;
-
-  @Expose()
   withdrawnDate?: Date;
 
   @Expose()

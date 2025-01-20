@@ -3,6 +3,7 @@ import { GeneXref } from 'src/gene-xref/gene-xref.entity';
 import {
   Column,
   Entity,
+  JoinColumn,
   ManyToOne,
   OneToMany,
   PrimaryGeneratedColumn,
@@ -28,6 +29,7 @@ export class Xref {
       eager: true,
     },
   )
+  @JoinColumn({ name: 'ext_resource_id' })
   externalResource: ExternalResource;
 
   @OneToMany(() => GeneXref, (geneXref) => geneXref.xref)

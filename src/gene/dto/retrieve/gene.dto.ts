@@ -15,7 +15,6 @@ import {
   IsInt,
   IsNotEmpty,
   IsObject,
-  IsString,
   ValidateNested,
 } from 'class-validator';
 import { nomenclatureType } from 'src/common/enum/nomenclature-type.enum';
@@ -40,7 +39,7 @@ export class GeneDto {
   @IsDate()
   @IsNotEmpty()
   @Expose()
-  createDate: Date;
+  creationDate: Date;
 
   @ApiProperty({
     description: 'The gene modification date',
@@ -67,14 +66,6 @@ export class GeneDto {
   @IsEnum(geneStatus)
   @Expose()
   status: geneStatus;
-
-  @ApiPropertyOptional({
-    description: 'The model organism DB ID of the gene',
-    example: 'POTRI.001G000100',
-  })
-  @IsString()
-  @Expose()
-  mod_id?: string | null;
 
   @ApiProperty({
     description: 'The species',

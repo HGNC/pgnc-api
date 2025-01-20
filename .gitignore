@@ -39,6 +39,7 @@ lerna-debug.log*
 .env
 .env.dev
 .env.test
+!sample.env
 
 # temp directory
 .temp
@@ -56,3 +57,6 @@ report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
 
 # config file for TypeORM
 typeorm-cli.config.ts
+
+# security reasons
+*.pem

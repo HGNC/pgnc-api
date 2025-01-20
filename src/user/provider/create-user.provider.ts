@@ -74,7 +74,7 @@ export class CreateUserProvider {
     }
     if (
       !admin.roles.some(
-        (role) => role.name === 'admin' || role.name === 'master',
+        (role) => role.role === 'admin' || role.role === 'master',
       )
     ) {
       throw new UnauthorizedException('Only admins can create new users.');
@@ -121,6 +121,7 @@ export class CreateUserProvider {
         where: { email: createUserDto.email },
       });
     } catch (error) {
+        console.log(error);
       throw new RequestTimeoutException(
         'Unable to create user at the moment, please try later.',
         {

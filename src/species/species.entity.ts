@@ -14,7 +14,7 @@ export class Species {
    */
   @PrimaryGeneratedColumn({ type: 'int' })
   @Exclude()
-  id: number;
+  taxonId: number;
 
   /**
    * Species common name.

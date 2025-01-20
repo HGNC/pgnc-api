@@ -56,7 +56,7 @@ export class UserRoleGuard extends AccessTokenGuard {
     const userId: number = request[REQUEST_USER_KEY].sub;
     const user = await this.userService.findById(userId);
     for (const role of user.roles) {
-      if (Object.values(roleTypes).includes(role.name as roleTypes)) {
+      if (Object.values(roleTypes).includes(role.role as roleTypes)) {
         return true;
       }
     }

@@ -1,5 +1,5 @@
 export class SpeciesDto {
-  id: number;
+  taxonId: number;
   commonName: string;
   scientificName: string;
 }

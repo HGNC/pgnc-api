@@ -4,5 +4,5 @@ import { Exclude } from 'class-transformer';
 export class SpeciesDto extends Parent {
   // Add any additional properties or methods specific to GeneSpeciesDto here
   @Exclude()
-  id: number;
+  taxonId: number;
 }

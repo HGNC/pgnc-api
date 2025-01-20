@@ -43,15 +43,6 @@ export class GeneLocusTypeDto {
   creationDate: Date;
 
   @ApiProperty({
-    description: 'The modification date of the gene locus type',
-    example: '2021-07-21T00:00:00.000Z',
-  })
-  @IsNotEmpty()
-  @IsDate()
-  @Expose()
-  modDate: Date;
-
-  @ApiProperty({
     description: 'The withdrawal date of the gene locus type',
     example: '2021-07-21T00:00:00.000Z',
   })

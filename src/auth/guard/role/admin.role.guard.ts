@@ -59,7 +59,7 @@ export class AdminRoleGuard extends AccessTokenGuard {
     const user = await this.userService.findById(userId);
     for (const role of user.roles) {
       if (
-        [roleTypes.ADMIN, roleTypes.MASTER].includes(role.name as roleTypes)
+        [roleTypes.ADMIN, roleTypes.MASTER].includes(role.role as roleTypes)
       ) {
         return true;
       }
