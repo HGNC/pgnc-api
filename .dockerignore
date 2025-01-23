@@ -1,0 +1,8 @@
+node_modules
+dist
+test
+.gitignore
+.prettierrc
+.env.dev
+sample.env
+README.md
