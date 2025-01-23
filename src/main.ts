@@ -41,13 +41,13 @@ async function bootstrap() {
   const config = new DocumentBuilder()
     .setVersion('0.0.1')
     .setTitle('PGNC API')
-    .setDescription('Use the base API URL as http://localhost:3000')
-    .setTermsOfService('http://localhost:3000/terms')
+    .setDescription('Use the base API URL as http://localhost:8080')
+    .setTermsOfService('http://localhost:8080/terms')
     .setLicense(
       'AGPLv3.0 License',
       'https://www.gnu.org/licenses/agpl-3.0.en.html',
     )
-    .addServer('http://localhost:3000')
+    .addServer('http://localhost:8080/api')
     .addBearerAuth()
     .build();
   const document = SwaggerModule.createDocument(app, config);
