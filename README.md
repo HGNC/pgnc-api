@@ -25,10 +25,12 @@ Authorization: Bearer YOUR_API_KEY
 ### Base URL
 
 ```plaintext
-https://api.pgnc.domain/v1
+http://localhost:3000/api
 ```
 
 ## Endpoints
+
+Endpoints can be seen at the base URL above.
 
 ## Error Handling
 
