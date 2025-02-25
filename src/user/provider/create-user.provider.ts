@@ -121,7 +121,6 @@ export class CreateUserProvider {
         where: { email: createUserDto.email },
       });
     } catch (error) {
-        console.log(error);
       throw new RequestTimeoutException(
         'Unable to create user at the moment, please try later.',
         {

@@ -40,12 +40,6 @@ import { GeneReplacementModule } from './gene-replacement/gene-replacement.modul
 import { GeneLocationModule } from './gene-location/gene-location.module';
 
 /**
- * Load the environment configuration. Can be either 'dev', 'test' or
- * undefined, which defines a live environment.
- */
-const env = process.env.NODE_ENV;
-
-/**
  * The main application module for the PGNC API.
  *
  * This module imports and configures various sub-modules and services required for the application.
@@ -56,7 +50,6 @@ const env = process.env.NODE_ENV;
     AuthModule,
     ConfigModule.forRoot({
       isGlobal: true,
-      envFilePath: !env ? '.env' : `.env.${env}`,
       load: [appConfig, databaseConfig],
       validationSchema: environmentValidation,
     }),
