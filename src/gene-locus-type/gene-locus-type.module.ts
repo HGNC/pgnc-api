@@ -9,14 +9,14 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { GeneLocusType } from './gene-locus-type.entity';
 
 @Module({
-  controllers: [GeneLocusTypeController],
-  providers: [GeneLocusTypeService],
-  imports: [
-    LocusTypeModule,
-    UserModule,
-    RoleModule,
-    GeneModule,
-    TypeOrmModule.forFeature([GeneLocusType]),
-  ],
+    controllers: [GeneLocusTypeController],
+    providers: [GeneLocusTypeService],
+    imports: [
+        LocusTypeModule,
+        UserModule,
+        RoleModule,
+        GeneModule,
+        TypeOrmModule.forFeature([GeneLocusType]),
+    ],
 })
 export class GeneLocusTypeModule {}

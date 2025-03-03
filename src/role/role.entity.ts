@@ -7,29 +7,29 @@ import { roleName } from './enum/role-name.enum';
  */
 @Entity()
 export class Role {
-  /**
-   * Role ID. Primary key.
-   */
-  @PrimaryGeneratedColumn({ type: 'int' })
-  id: number;
+    /**
+     * Role ID. Primary key.
+     */
+    @PrimaryGeneratedColumn({ type: 'int' })
+    id: number;
 
-  /**
-   * Role name. Unique.
-   */
-  @Column({
-    type: 'enum',
-    enum: roleName,
-    nullable: false,
-    default: roleName.USER,
-    unique: true,
-  })
-  role: string;
+    /**
+     * Role name. Unique.
+     */
+    @Column({
+        type: 'enum',
+        enum: roleName,
+        nullable: false,
+        default: roleName.USER,
+        unique: true,
+    })
+    role: string;
 
-  /**
-   * Users with this role. Many-to-many relationship. Cascade on delete.
-   */
-  @ManyToMany(() => User, (user) => user.roles, {
-    onDelete: 'CASCADE',
-  })
-  users: User[];
+    /**
+     * Users with this role. Many-to-many relationship. Cascade on delete.
+     */
+    @ManyToMany(() => User, (user) => user.roles, {
+        onDelete: 'CASCADE',
+    })
+    users: User[];
 }

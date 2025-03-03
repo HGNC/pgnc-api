@@ -3,6 +3,6 @@ import { ExternalResourceDto as Parent } from 'src/external-resource/dto/retriev
 
 @Exclude()
 export class ExternalResourceDto extends Parent {
-  @Exclude()
-  id: number;
+    @Exclude()
+    id: number;
 }

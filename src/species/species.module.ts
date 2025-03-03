@@ -8,9 +8,9 @@ import { Species } from './species.entity';
  * Species module class to handle species related routes.
  */
 @Module({
-  controllers: [SpeciesController],
-  providers: [SpeciesService],
-  imports: [TypeOrmModule.forFeature([Species])],
-  exports: [SpeciesService],
+    controllers: [SpeciesController],
+    providers: [SpeciesService],
+    imports: [TypeOrmModule.forFeature([Species])],
+    exports: [SpeciesService],
 })
 export class SpeciesModule {}

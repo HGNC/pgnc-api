@@ -4,12 +4,12 @@ import { GeneLocusTypeDto } from 'src/gene-locus-type/dto/retrieve/gene-locus-ty
 
 @Exclude()
 export class LocusTypeDto extends GeneLocusTypeDto {
-  @Exclude()
-  geneId: number;
+    @Exclude()
+    geneId: number;
 
-  @Exclude()
-  locusTypeId: number;
+    @Exclude()
+    locusTypeId: number;
 
-  @Exclude()
-  status: basicStatus;
+    @Exclude()
+    status: basicStatus;
 }

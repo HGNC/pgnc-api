@@ -5,9 +5,9 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { ExternalResourceService } from './external-resource.service';
 
 @Module({
-  controllers: [ExternalResourceController],
-  imports: [TypeOrmModule.forFeature([ExternalResource])],
-  providers: [ExternalResourceService],
-  exports: [ExternalResourceService],
+    controllers: [ExternalResourceController],
+    imports: [TypeOrmModule.forFeature([ExternalResource])],
+    providers: [ExternalResourceService],
+    exports: [ExternalResourceService],
 })
 export class ExternalResourceModule {}

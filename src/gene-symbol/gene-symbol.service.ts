@@ -10,42 +10,44 @@ import { CreateGeneSymbolDto } from './dto/create/create-gene-symbol.dto';
 
 @Injectable()
 export class GeneSymbolService {
-  constructor(
-    private readonly userService: UserService,
-    private readonly geneService: GeneService,
-    private readonly symbolService: SymbolService,
-    @InjectRepository(GeneSymbol)
-    private readonly geneSymbolRepository: Repository<GeneSymbol>,
-  ) {}
+    constructor(
+        private readonly userService: UserService,
+        private readonly geneService: GeneService,
+        private readonly symbolService: SymbolService,
+        @InjectRepository(GeneSymbol)
+        private readonly geneSymbolRepository: Repository<GeneSymbol>,
+    ) {}
 
-  public async create(
-    createGeneSymbolDto: CreateGeneSymbolDto,
-    user: ActiveUserInterface,
-  ): Promise<GeneSymbol> {
-    let author = undefined;
-    let gene = undefined;
-    let symbol = undefined;
-    try {
-      author = await this.userService.findById(user.sub);
-      gene = await this.geneService.getById(createGeneSymbolDto.gene);
-      symbol = await this.symbolService.findSymbol(createGeneSymbolDto.symbol);
-    } catch (error) {
-      throw new ConflictException(error);
+    public async create(
+        createGeneSymbolDto: CreateGeneSymbolDto,
+        user: ActiveUserInterface,
+    ): Promise<GeneSymbol> {
+        let author = undefined;
+        let gene = undefined;
+        let symbol = undefined;
+        try {
+            author = await this.userService.findById(user.sub);
+            gene = await this.geneService.getById(createGeneSymbolDto.gene);
+            symbol = await this.symbolService.findSymbol(
+                createGeneSymbolDto.symbol,
+            );
+        } catch (error) {
+            throw new ConflictException(error);
+        }
+        const geneSymbol = this.geneSymbolRepository.create({
+            type: createGeneSymbolDto.type,
+            status: createGeneSymbolDto.status,
+            creator: author,
+            gene: gene,
+            symbol: symbol,
+        });
+        try {
+            return await this.geneSymbolRepository.save(geneSymbol);
+        } catch (error) {
+            throw new ConflictException(error, {
+                description:
+                    'Gene symbol creation failed. Make sure the symbol is unique',
+            });
+        }
     }
-    const geneSymbol = this.geneSymbolRepository.create({
-      type: createGeneSymbolDto.type,
-      status: createGeneSymbolDto.status,
-      creator: author,
-      gene: gene,
-      symbol: symbol,
-    });
-    try {
-      return await this.geneSymbolRepository.save(geneSymbol);
-    } catch (error) {
-      throw new ConflictException(error, {
-        description:
-          'Gene symbol creation failed. Make sure the symbol is unique',
-      });
-    }
-  }
 }

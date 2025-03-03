@@ -10,4 +10,4 @@ import { roleName } from 'src/role/enum/role-name.enum';
  * @returns The assigned roles.
  */
 export const Role = (...roleTypes: (roleName | string)[]) =>
-  SetMetadata(ROLE_TYPE_KEY, roleTypes);
+    SetMetadata(ROLE_TYPE_KEY, roleTypes);

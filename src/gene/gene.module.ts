@@ -20,24 +20,24 @@ import { GeneHistory } from 'src/gene-history/gene-history.entity';
  * Gene module class to handle gene related routes.
  */
 @Module({
-  controllers: [GeneController],
-  imports: [
-    UserModule,
-    TypeOrmModule.forFeature([
-      Gene,
-      GeneSymbol,
-      GeneName,
-      GeneNote,
-      GeneReplacement,
-      GeneXref,
-      GeneLocation,
-      GeneHistory,
-    ]),
-    SpeciesModule,
-    PaginationModule,
-    RoleModule,
-  ],
-  exports: [GeneService],
-  providers: [GeneService, CreateGeneProvider],
+    controllers: [GeneController],
+    imports: [
+        UserModule,
+        TypeOrmModule.forFeature([
+            Gene,
+            GeneSymbol,
+            GeneName,
+            GeneNote,
+            GeneReplacement,
+            GeneXref,
+            GeneLocation,
+            GeneHistory,
+        ]),
+        SpeciesModule,
+        PaginationModule,
+        RoleModule,
+    ],
+    exports: [GeneService],
+    providers: [GeneService, CreateGeneProvider],
 })
 export class GeneModule {}

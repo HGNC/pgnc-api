@@ -4,12 +4,12 @@ import { GeneLocationDto } from 'src/gene-location/dto/retrieve/gene-location.dt
 
 @Exclude()
 export class LocationDto extends GeneLocationDto {
-  @Exclude()
-  geneId: number;
+    @Exclude()
+    geneId: number;
 
-  @Exclude()
-  locationId: number;
+    @Exclude()
+    locationId: number;
 
-  @Exclude()
-  status: basicStatus;
+    @Exclude()
+    status: basicStatus;
 }

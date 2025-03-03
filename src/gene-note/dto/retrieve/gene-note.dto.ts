@@ -4,25 +4,25 @@ import { NoteDto } from './gene-note/note.dto';
 
 @Exclude()
 export class GeneNoteDto {
-  @Expose()
-  geneId: number;
+    @Expose()
+    geneId: number;
 
-  @Expose()
-  noteId: number;
+    @Expose()
+    noteId: number;
 
-  @Expose()
-  createDate: Date;
+    @Expose()
+    createDate: Date;
 
-  @Expose()
-  modDate: Date;
+    @Expose()
+    modDate: Date;
 
-  @Expose()
-  withdrawnDate?: Date | null;
+    @Expose()
+    withdrawnDate?: Date | null;
 
-  @Expose()
-  status: basicStatus;
+    @Expose()
+    status: basicStatus;
 
-  @Expose()
-  @Type(() => NoteDto)
-  note: NoteDto;
+    @Expose()
+    @Type(() => NoteDto)
+    note: NoteDto;
 }

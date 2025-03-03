@@ -5,8 +5,8 @@ import { Assembly } from './assembly.entity';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
 @Module({
-  controllers: [AssemblyController],
-  providers: [AssemblyService],
-  imports: [TypeOrmModule.forFeature([Assembly])],
+    controllers: [AssemblyController],
+    providers: [AssemblyService],
+    imports: [TypeOrmModule.forFeature([Assembly])],
 })
 export class AssemblyModule {}

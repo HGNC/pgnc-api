@@ -3,6 +3,6 @@ import { SpeciesDto as Parent } from 'src/species/dto/retrieve/species.dto';
 
 @Exclude()
 export class SpeciesDto extends Parent {
-  @Exclude()
-  id: number;
+    @Exclude()
+    id: number;
 }

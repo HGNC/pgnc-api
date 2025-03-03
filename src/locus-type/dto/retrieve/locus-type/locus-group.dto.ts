@@ -3,6 +3,6 @@ import { LocusGroupDto as Parent } from 'src/locus-group/dto/retrieve/locus-grou
 
 @Exclude()
 export class LocusGroupDto extends Parent {
-  @Exclude()
-  id: number;
+    @Exclude()
+    id: number;
 }

@@ -5,8 +5,8 @@ import { Location } from './location.entity';
 
 @Injectable()
 export class LocationService {
-  constructor(
-    @InjectRepository(Location)
-    private readonly locationRepository: Repository<Location>,
-  ) {}
+    constructor(
+        @InjectRepository(Location)
+        private readonly locationRepository: Repository<Location>,
+    ) {}
 }
