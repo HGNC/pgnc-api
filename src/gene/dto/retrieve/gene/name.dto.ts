@@ -3,10 +3,10 @@ import { Exclude } from 'class-transformer';
 import { basicStatus } from 'src/common/enum/basic-status.enum';
 
 export class NameDto extends GeneNameDto {
-  @Exclude()
-  geneId: number;
-  @Exclude()
-  nameId: number;
-  @Exclude()
-  status: basicStatus;
+    @Exclude()
+    geneId: number;
+    @Exclude()
+    nameId: number;
+    @Exclude()
+    status: basicStatus;
 }

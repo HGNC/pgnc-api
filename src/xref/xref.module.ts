@@ -6,9 +6,9 @@ import { Xref } from './xref.entity';
 import { ExternalResourceModule } from 'src/external-resource/external-resource.module';
 
 @Module({
-  controllers: [XrefController],
-  imports: [TypeOrmModule.forFeature([Xref]), ExternalResourceModule],
-  providers: [XrefService],
-  exports: [XrefService],
+    controllers: [XrefController],
+    imports: [TypeOrmModule.forFeature([Xref]), ExternalResourceModule],
+    providers: [XrefService],
+    exports: [XrefService],
 })
 export class XrefModule {}

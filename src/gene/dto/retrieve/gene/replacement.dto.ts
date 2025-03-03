@@ -3,6 +3,6 @@ import { GeneReplacementDto } from 'src/gene-replacement/dto/retrieve/gene-repla
 
 @Exclude()
 export class ReplacementDto extends GeneReplacementDto {
-  @Exclude()
-  previousId: number;
+    @Exclude()
+    previousId: number;
 }

@@ -9,14 +9,14 @@ import { UserModule } from 'src/user/user.module';
 import { RoleModule } from 'src/role/role.module';
 
 @Module({
-  controllers: [GeneSymbolController],
-  providers: [GeneSymbolService],
-  imports: [
-    SymbolModule,
-    UserModule,
-    GeneModule,
-    TypeOrmModule.forFeature([GeneSymbol]),
-    RoleModule,
-  ],
+    controllers: [GeneSymbolController],
+    providers: [GeneSymbolService],
+    imports: [
+        SymbolModule,
+        UserModule,
+        GeneModule,
+        TypeOrmModule.forFeature([GeneSymbol]),
+        RoleModule,
+    ],
 })
 export class GeneSymbolModule {}

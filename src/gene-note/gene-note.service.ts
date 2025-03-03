@@ -10,40 +10,41 @@ import { CreateGeneNoteDto } from './dto/create/create-gene-note.dto';
 
 @Injectable()
 export class GeneNoteService {
-  constructor(
-    private readonly userService: UserService,
-    private readonly geneService: GeneService,
-    private readonly noteService: NoteService,
-    @InjectRepository(GeneNote)
-    private readonly geneNoteRepository: Repository<GeneNote>,
-  ) {}
+    constructor(
+        private readonly userService: UserService,
+        private readonly geneService: GeneService,
+        private readonly noteService: NoteService,
+        @InjectRepository(GeneNote)
+        private readonly geneNoteRepository: Repository<GeneNote>,
+    ) {}
 
-  public async create(
-    createGeneNoteDto: CreateGeneNoteDto,
-    user: ActiveUserInterface,
-  ): Promise<GeneNote> {
-    let author = undefined;
-    let gene = undefined;
-    let note = undefined;
-    try {
-      author = await this.userService.findById(user.sub);
-      gene = await this.geneService.getById(createGeneNoteDto.gene);
-      note = await this.noteService.getById(createGeneNoteDto.note);
-    } catch (error) {
-      throw new ConflictException(error);
+    public async create(
+        createGeneNoteDto: CreateGeneNoteDto,
+        user: ActiveUserInterface,
+    ): Promise<GeneNote> {
+        let author = undefined;
+        let gene = undefined;
+        let note = undefined;
+        try {
+            author = await this.userService.findById(user.sub);
+            gene = await this.geneService.getById(createGeneNoteDto.gene);
+            note = await this.noteService.getById(createGeneNoteDto.note);
+        } catch (error) {
+            throw new ConflictException(error);
+        }
+        const geneNote = this.geneNoteRepository.create({
+            status: createGeneNoteDto.status,
+            creator: author,
+            gene: gene,
+            note: note,
+        });
+        try {
+            return await this.geneNoteRepository.save(geneNote);
+        } catch (error) {
+            throw new ConflictException(error, {
+                description:
+                    'Gene note creation failed. Make sure the note is unique',
+            });
+        }
     }
-    const geneNote = this.geneNoteRepository.create({
-      status: createGeneNoteDto.status,
-      creator: author,
-      gene: gene,
-      note: note,
-    });
-    try {
-      return await this.geneNoteRepository.save(geneNote);
-    } catch (error) {
-      throw new ConflictException(error, {
-        description: 'Gene note creation failed. Make sure the note is unique',
-      });
-    }
-  }
 }

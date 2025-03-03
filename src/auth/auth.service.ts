@@ -10,27 +10,27 @@ import { RefreshTokenDto } from './dto/refresh-token.dto';
  */
 @Injectable()
 export class AuthService {
-  /**
-   * Creates an instance of AuthService.
-   */
-  constructor(
-    private readonly signInProvider: SignInProvider,
-    private readonly refreshTokensProvider: RefreshTokensProvider,
-  ) {}
+    /**
+     * Creates an instance of AuthService.
+     */
+    constructor(
+        private readonly signInProvider: SignInProvider,
+        private readonly refreshTokensProvider: RefreshTokensProvider,
+    ) {}
 
-  /**
-   * Logs in a user with the given email & password
-   */
-  public async signIn(signinDto: SigninDto) {
-    return await this.signInProvider.signIn(signinDto);
-  }
+    /**
+     * Logs in a user with the given email & password
+     */
+    public async signIn(signinDto: SigninDto) {
+        return await this.signInProvider.signIn(signinDto);
+    }
 
-  /**
-   * Refreshes the access & refresh tokens
-   */
-  public async refreshTokens(
-    refreshTokenDto: RefreshTokenDto,
-  ): Promise<{ accessToken: string; refreshToken: string }> {
-    return await this.refreshTokensProvider.refreshTokens(refreshTokenDto);
-  }
+    /**
+     * Refreshes the access & refresh tokens
+     */
+    public async refreshTokens(
+        refreshTokenDto: RefreshTokenDto,
+    ): Promise<{ accessToken: string; refreshToken: string }> {
+        return await this.refreshTokensProvider.refreshTokens(refreshTokenDto);
+    }
 }

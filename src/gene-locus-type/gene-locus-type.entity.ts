@@ -3,52 +3,52 @@ import { Gene } from 'src/gene/gene.entity';
 import { LocusType } from 'src/locus-type/locus-type.entity';
 import { User } from 'src/user/user.entity';
 import {
-  Column,
-  CreateDateColumn,
-  DeleteDateColumn,
-  Entity,
-  JoinColumn,
-  ManyToOne,
-  PrimaryColumn,
+    Column,
+    CreateDateColumn,
+    DeleteDateColumn,
+    Entity,
+    JoinColumn,
+    ManyToOne,
+    PrimaryColumn,
 } from 'typeorm';
 
 @Entity({
-  name: 'gene_has_locus_type',
+    name: 'gene_has_locus_type',
 })
 export class GeneLocusType {
-  @PrimaryColumn()
-  geneId: number;
+    @PrimaryColumn()
+    geneId: number;
 
-  @PrimaryColumn()
-  locusTypeId: number;
+    @PrimaryColumn()
+    locusTypeId: number;
 
-  @Column({
-    type: 'enum',
-    enum: basicStatus,
-    default: basicStatus.INTERNAL,
-    nullable: false,
-  })
-  status: basicStatus;
+    @Column({
+        type: 'enum',
+        enum: basicStatus,
+        default: basicStatus.INTERNAL,
+        nullable: false,
+    })
+    status: basicStatus;
 
-  @ManyToOne(() => Gene, (gene) => gene.geneLocusTypes)
-  @JoinColumn({ name: 'gene_id' })
-  gene: Gene;
+    @ManyToOne(() => Gene, (gene) => gene.geneLocusTypes)
+    @JoinColumn({ name: 'gene_id' })
+    gene: Gene;
 
-  @ManyToOne(() => LocusType, (locusType) => locusType.geneLocusTypes, {
-    eager: true,
-  })
-  @JoinColumn({ name: 'locus_type_id' })
-  locusType: LocusType;
+    @ManyToOne(() => LocusType, (locusType) => locusType.geneLocusTypes, {
+        eager: true,
+    })
+    @JoinColumn({ name: 'locus_type_id' })
+    locusType: LocusType;
 
-  @CreateDateColumn()
-  creationDate?: Date;
+    @CreateDateColumn()
+    creationDate?: Date;
 
-  @DeleteDateColumn()
-  withdrawnDate?: Date;
+    @DeleteDateColumn()
+    withdrawnDate?: Date;
 
-  @ManyToOne(() => User, (user) => user.geneNamesCreated)
-  creator?: User;
+    @ManyToOne(() => User, (user) => user.geneNamesCreated)
+    creator?: User;
 
-  @ManyToOne(() => User, (user) => user.geneNamesEdited)
-  editor?: User;
+    @ManyToOne(() => User, (user) => user.geneNamesEdited)
+    editor?: User;
 }

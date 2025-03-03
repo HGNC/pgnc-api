@@ -9,38 +9,38 @@ import { CreateRoleDto } from '../dto/create/create-role.dto';
  */
 @Injectable()
 export class RoleService {
-  /**
-   * Create a new instance of RoleService
-   */
-  constructor(
-    @InjectRepository(Role)
-    private readonly roleRepository: Repository<Role>,
-  ) {}
+    /**
+     * Create a new instance of RoleService
+     */
+    constructor(
+        @InjectRepository(Role)
+        private readonly roleRepository: Repository<Role>,
+    ) {}
 
-  /**
-   * Create a new role
-   */
-  public async create(createRoleDto: CreateRoleDto): Promise<void> {
-    const role = await this.roleRepository.create({ ...createRoleDto });
-    await this.roleRepository.save(role);
-  }
+    /**
+     * Create a new role
+     */
+    public async create(createRoleDto: CreateRoleDto): Promise<void> {
+        const role = await this.roleRepository.create({ ...createRoleDto });
+        await this.roleRepository.save(role);
+    }
 
-  /**
-   * Find multiple roles by their names
-   */
-  public async findMultiple(roles: string[]): Promise<Role[]> {
-    const results = await this.roleRepository.find({
-      where: {
-        role: In(roles),
-      },
-    });
-    return results;
-  }
+    /**
+     * Find multiple roles by their names
+     */
+    public async findMultiple(roles: string[]): Promise<Role[]> {
+        const results = await this.roleRepository.find({
+            where: {
+                role: In(roles),
+            },
+        });
+        return results;
+    }
 
-  /**
-   * Delete a role
-   */
-  public async delete(roleId: number): Promise<void> {
-    await this.roleRepository.delete(roleId);
-  }
+    /**
+     * Delete a role
+     */
+    public async delete(roleId: number): Promise<void> {
+        await this.roleRepository.delete(roleId);
+    }
 }

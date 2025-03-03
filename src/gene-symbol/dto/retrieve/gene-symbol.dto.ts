@@ -5,28 +5,28 @@ import { SymbolDto } from './gene-symbol/symbol.dto';
 
 @Exclude()
 export class GeneSymbolDto {
-  @Expose()
-  geneId: number;
+    @Expose()
+    geneId: number;
 
-  @Expose()
-  symbolId: number;
+    @Expose()
+    symbolId: number;
 
-  @Expose()
-  type: nomenclatureType;
+    @Expose()
+    type: nomenclatureType;
 
-  @Expose()
-  status: basicStatus;
+    @Expose()
+    status: basicStatus;
 
-  @Expose()
-  creationDate: Date;
+    @Expose()
+    creationDate: Date;
 
-  @Expose()
-  modDate: Date;
+    @Expose()
+    modDate: Date;
 
-  @Expose()
-  withdrawnDate?: Date;
+    @Expose()
+    withdrawnDate?: Date;
 
-  @Expose()
-  @Type(() => SymbolDto)
-  symbol: SymbolDto;
+    @Expose()
+    @Type(() => SymbolDto)
+    symbol: SymbolDto;
 }

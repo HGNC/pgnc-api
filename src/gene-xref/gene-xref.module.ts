@@ -9,14 +9,14 @@ import { RoleModule } from 'src/role/role.module';
 import { GeneXref } from './gene-xref.entity';
 
 @Module({
-  controllers: [GeneXrefController],
-  providers: [GeneXrefService],
-  imports: [
-    XrefModule,
-    UserModule,
-    GeneModule,
-    TypeOrmModule.forFeature([GeneXref]),
-    RoleModule,
-  ],
+    controllers: [GeneXrefController],
+    providers: [GeneXrefService],
+    imports: [
+        XrefModule,
+        UserModule,
+        GeneModule,
+        TypeOrmModule.forFeature([GeneXref]),
+        RoleModule,
+    ],
 })
 export class GeneXrefModule {}

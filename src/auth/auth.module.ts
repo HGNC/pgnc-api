@@ -17,22 +17,22 @@ import { JwtModule } from '@nestjs/jwt';
  * for authentication services.
  */
 @Module({
-  controllers: [AuthController],
-  providers: [
-    AuthService,
-    {
-      provide: HashingProvider,
-      useClass: BcryptProvider,
-    },
-    SignInProvider,
-    GenerateTokensProvider,
-    RefreshTokensProvider,
-  ],
-  exports: [AuthService, HashingProvider],
-  imports: [
-    forwardRef(() => UserModule),
-    ConfigModule.forFeature(jwtConfig),
-    JwtModule.registerAsync(jwtConfig.asProvider()),
-  ],
+    controllers: [AuthController],
+    providers: [
+        AuthService,
+        {
+            provide: HashingProvider,
+            useClass: BcryptProvider,
+        },
+        SignInProvider,
+        GenerateTokensProvider,
+        RefreshTokensProvider,
+    ],
+    exports: [AuthService, HashingProvider],
+    imports: [
+        forwardRef(() => UserModule),
+        ConfigModule.forFeature(jwtConfig),
+        JwtModule.registerAsync(jwtConfig.asProvider()),
+    ],
 })
 export class AuthModule {}

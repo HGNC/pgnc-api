@@ -4,12 +4,12 @@ import { GeneSymbolDto } from 'src/gene-symbol/dto/retrieve/gene-symbol.dto';
 
 @Exclude()
 export class SymbolDto extends GeneSymbolDto {
-  @Exclude()
-  geneId: number;
+    @Exclude()
+    geneId: number;
 
-  @Exclude()
-  symbolId: number;
+    @Exclude()
+    symbolId: number;
 
-  @Exclude()
-  status: basicStatus;
+    @Exclude()
+    status: basicStatus;
 }

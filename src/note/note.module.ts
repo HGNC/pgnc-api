@@ -6,9 +6,9 @@ import { RoleModule } from 'src/role/role.module';
 import { NoteService } from './note.service';
 
 @Module({
-  controllers: [NoteController],
-  imports: [TypeOrmModule.forFeature([Note]), RoleModule],
-  providers: [NoteService],
-  exports: [NoteService],
+    controllers: [NoteController],
+    imports: [TypeOrmModule.forFeature([Note]), RoleModule],
+    providers: [NoteService],
+    exports: [NoteService],
 })
 export class NoteModule {}

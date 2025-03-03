@@ -4,21 +4,21 @@ import { locationType } from 'src/location/enum/location-type.enum';
 
 @Exclude()
 export class LocationDto {
-  @Expose()
-  id: number;
+    @Expose()
+    id: number;
 
-  @Expose()
-  name: string;
+    @Expose()
+    name: string;
 
-  @Expose()
-  refseqAccession: string;
+    @Expose()
+    refseqAccession: string;
 
-  @Expose()
-  genbankAccession: string;
+    @Expose()
+    genbankAccession: string;
 
-  @Expose()
-  coordSystem: coordSys;
+    @Expose()
+    coordSystem: coordSys;
 
-  @Expose()
-  type: locationType;
+    @Expose()
+    type: locationType;
 }

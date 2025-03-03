@@ -9,14 +9,14 @@ import { UserModule } from 'src/user/user.module';
 import { NameModule } from 'src/name/name.module';
 
 @Module({
-  controllers: [GeneNameController],
-  providers: [GeneNameService],
-  imports: [
-    NameModule,
-    UserModule,
-    GeneModule,
-    TypeOrmModule.forFeature([GeneName]),
-    RoleModule,
-  ],
+    controllers: [GeneNameController],
+    providers: [GeneNameService],
+    imports: [
+        NameModule,
+        UserModule,
+        GeneModule,
+        TypeOrmModule.forFeature([GeneName]),
+        RoleModule,
+    ],
 })
 export class GeneNameModule {}

@@ -9,14 +9,14 @@ import { GeneLocation } from './gene-location.entity';
 import { RoleModule } from 'src/role/role.module';
 
 @Module({
-  providers: [GeneLocationService],
-  controllers: [GeneLocationController],
-  imports: [
-    UserModule,
-    GeneModule,
-    LocationModule,
-    TypeOrmModule.forFeature([GeneLocation]),
-    RoleModule,
-  ],
+    providers: [GeneLocationService],
+    controllers: [GeneLocationController],
+    imports: [
+        UserModule,
+        GeneModule,
+        LocationModule,
+        TypeOrmModule.forFeature([GeneLocation]),
+        RoleModule,
+    ],
 })
 export class GeneLocationModule {}

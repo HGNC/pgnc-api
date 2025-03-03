@@ -8,13 +8,13 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { GeneReplacement } from './gene-replacement.entity';
 
 @Module({
-  controllers: [GeneReplacementController],
-  providers: [GeneReplacementService],
-  imports: [
-    UserModule,
-    GeneModule,
-    RoleModule,
-    TypeOrmModule.forFeature([GeneReplacement]),
-  ],
+    controllers: [GeneReplacementController],
+    providers: [GeneReplacementService],
+    imports: [
+        UserModule,
+        GeneModule,
+        RoleModule,
+        TypeOrmModule.forFeature([GeneReplacement]),
+    ],
 })
 export class GeneReplacementModule {}

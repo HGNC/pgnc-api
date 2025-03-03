@@ -1,12 +1,12 @@
 import {
-  Column,
-  CreateDateColumn,
-  DeleteDateColumn,
-  Entity,
-  JoinColumn,
-  ManyToOne,
-  PrimaryColumn,
-  UpdateDateColumn,
+    Column,
+    CreateDateColumn,
+    DeleteDateColumn,
+    Entity,
+    JoinColumn,
+    ManyToOne,
+    PrimaryColumn,
+    UpdateDateColumn,
 } from 'typeorm';
 import { basicStatus } from 'src/common/enum/basic-status.enum';
 import { nomenclatureType } from 'src/common/enum/nomenclature-type.enum';
@@ -16,48 +16,48 @@ import { User } from 'src/user/user.entity';
 
 @Entity({ name: 'gene_has_name' })
 export class GeneName {
-  @PrimaryColumn()
-  geneId: number;
+    @PrimaryColumn()
+    geneId: number;
 
-  @PrimaryColumn()
-  nameId: number;
+    @PrimaryColumn()
+    nameId: number;
 
-  @Column({
-    type: 'enum',
-    enum: nomenclatureType,
-    default: nomenclatureType.ALIAS,
-    nullable: false,
-  })
-  type: nomenclatureType;
+    @Column({
+        type: 'enum',
+        enum: nomenclatureType,
+        default: nomenclatureType.ALIAS,
+        nullable: false,
+    })
+    type: nomenclatureType;
 
-  @Column({
-    type: 'enum',
-    enum: basicStatus,
-    default: basicStatus.INTERNAL,
-    nullable: false,
-  })
-  status: basicStatus;
+    @Column({
+        type: 'enum',
+        enum: basicStatus,
+        default: basicStatus.INTERNAL,
+        nullable: false,
+    })
+    status: basicStatus;
 
-  @ManyToOne(() => Gene, (gene) => gene.geneNames)
-  @JoinColumn({ name: 'gene_id' })
-  gene: Gene;
+    @ManyToOne(() => Gene, (gene) => gene.geneNames)
+    @JoinColumn({ name: 'gene_id' })
+    gene: Gene;
 
-  @ManyToOne(() => Name, (name) => name.geneNames, { eager: true })
-  @JoinColumn({ name: 'name_id' })
-  name: Name;
+    @ManyToOne(() => Name, (name) => name.geneNames, { eager: true })
+    @JoinColumn({ name: 'name_id' })
+    name: Name;
 
-  @CreateDateColumn()
-  creationDate?: Date;
+    @CreateDateColumn()
+    creationDate?: Date;
 
-  @UpdateDateColumn()
-  modDate?: Date;
+    @UpdateDateColumn()
+    modDate?: Date;
 
-  @DeleteDateColumn()
-  withdrawnDate?: Date;
+    @DeleteDateColumn()
+    withdrawnDate?: Date;
 
-  @ManyToOne(() => User, (user) => user.geneNamesCreated)
-  creator?: User;
+    @ManyToOne(() => User, (user) => user.geneNamesCreated)
+    creator?: User;
 
-  @ManyToOne(() => User, (user) => user.geneNamesEdited)
-  editor?: User;
+    @ManyToOne(() => User, (user) => user.geneNamesEdited)
+    editor?: User;
 }

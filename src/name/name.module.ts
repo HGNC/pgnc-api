@@ -6,9 +6,9 @@ import { RoleModule } from 'src/role/role.module';
 import { NameService } from './name.service';
 
 @Module({
-  controllers: [NameController],
-  imports: [TypeOrmModule.forFeature([Name]), RoleModule],
-  providers: [NameService],
-  exports: [NameService],
+    controllers: [NameController],
+    imports: [TypeOrmModule.forFeature([Name]), RoleModule],
+    providers: [NameService],
+    exports: [NameService],
 })
 export class NameModule {}

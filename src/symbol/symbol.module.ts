@@ -6,9 +6,9 @@ import { SymbolService } from './symbol.service';
 import { RoleModule } from 'src/role/role.module';
 
 @Module({
-  controllers: [SymbolController],
-  providers: [SymbolService],
-  imports: [TypeOrmModule.forFeature([Symbol]), RoleModule],
-  exports: [SymbolService],
+    controllers: [SymbolController],
+    providers: [SymbolService],
+    imports: [TypeOrmModule.forFeature([Symbol]), RoleModule],
+    exports: [SymbolService],
 })
 export class SymbolModule {}

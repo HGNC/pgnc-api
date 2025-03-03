@@ -1,11 +1,11 @@
 import { GeneLocusType } from 'src/gene-locus-type/gene-locus-type.entity';
 import { LocusGroup } from 'src/locus-group/locus-group.entity';
 import {
-  Entity,
-  PrimaryGeneratedColumn,
-  Column,
-  ManyToOne,
-  OneToMany,
+    Entity,
+    PrimaryGeneratedColumn,
+    Column,
+    ManyToOne,
+    OneToMany,
 } from 'typeorm';
 
 /**
@@ -14,34 +14,34 @@ import {
  */
 @Entity()
 export class LocusType {
-  /**
-   * The unique identifier of the locus type.
-   * @type {number}
-   */
-  @PrimaryGeneratedColumn()
-  id: number;
+    /**
+     * The unique identifier of the locus type.
+     * @type {number}
+     */
+    @PrimaryGeneratedColumn()
+    id: number;
 
-  /**
-   * The name of the locus type. Cannot be null or empty.
-   * @type {string}
-   */
-  @Column({
-    type: 'varchar',
-    length: 45,
-    unique: true,
-    nullable: false,
-  })
-  name: string;
+    /**
+     * The name of the locus type. Cannot be null or empty.
+     * @type {string}
+     */
+    @Column({
+        type: 'varchar',
+        length: 45,
+        unique: true,
+        nullable: false,
+    })
+    name: string;
 
-  /**
-   * M:1 relationship with LocusGroup
-   * @type {LocusGroup[]}
-   */
-  @ManyToOne(() => LocusGroup, (locusGroup) => locusGroup.locusTypes, {
-    eager: true,
-  })
-  locusGroup: LocusGroup;
+    /**
+     * M:1 relationship with LocusGroup
+     * @type {LocusGroup[]}
+     */
+    @ManyToOne(() => LocusGroup, (locusGroup) => locusGroup.locusTypes, {
+        eager: true,
+    })
+    locusGroup: LocusGroup;
 
-  @OneToMany(() => GeneLocusType, (geneLocusType) => geneLocusType.locusType)
-  geneLocusTypes: GeneLocusType[];
+    @OneToMany(() => GeneLocusType, (geneLocusType) => geneLocusType.locusType)
+    geneLocusTypes: GeneLocusType[];
 }

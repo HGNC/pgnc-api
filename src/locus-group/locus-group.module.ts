@@ -5,9 +5,9 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { LocusGroupService } from './locus-group.service';
 
 @Module({
-  controllers: [LocusGroupController],
-  imports: [TypeOrmModule.forFeature([LocusGroup])],
-  providers: [LocusGroupService],
-  exports: [LocusGroupService],
+    controllers: [LocusGroupController],
+    imports: [TypeOrmModule.forFeature([LocusGroup])],
+    providers: [LocusGroupService],
+    exports: [LocusGroupService],
 })
 export class LocusGroupModule {}

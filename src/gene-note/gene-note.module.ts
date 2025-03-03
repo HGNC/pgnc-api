@@ -9,14 +9,14 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { GeneNote } from './gene-note.entity';
 
 @Module({
-  controllers: [GeneNoteController],
-  providers: [GeneNoteService],
-  imports: [
-    NoteModule,
-    UserModule,
-    GeneModule,
-    RoleModule,
-    TypeOrmModule.forFeature([GeneNote]),
-  ],
+    controllers: [GeneNoteController],
+    providers: [GeneNoteService],
+    imports: [
+        NoteModule,
+        UserModule,
+        GeneModule,
+        RoleModule,
+        TypeOrmModule.forFeature([GeneNote]),
+    ],
 })
 export class GeneNoteModule {}

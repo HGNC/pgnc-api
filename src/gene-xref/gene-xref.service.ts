@@ -10,41 +10,42 @@ import { CreateGeneXrefDto } from './dto/create/create-gene-xref.dto';
 
 @Injectable()
 export class GeneXrefService {
-  constructor(
-    private readonly userService: UserService,
-    private readonly geneService: GeneService,
-    private readonly xrefService: XrefService,
-    @InjectRepository(GeneXref)
-    private readonly geneXrefRepository: Repository<GeneXref>,
-  ) {}
+    constructor(
+        private readonly userService: UserService,
+        private readonly geneService: GeneService,
+        private readonly xrefService: XrefService,
+        @InjectRepository(GeneXref)
+        private readonly geneXrefRepository: Repository<GeneXref>,
+    ) {}
 
-  public async create(
-    createGeneXrefDto: CreateGeneXrefDto,
-    user: ActiveUserInterface,
-  ): Promise<GeneXref> {
-    let author = undefined;
-    let gene = undefined;
-    let xref = undefined;
-    try {
-      author = await this.userService.findById(user.sub);
-      gene = await this.geneService.getById(createGeneXrefDto.gene);
-      xref = await this.xrefService.findById(createGeneXrefDto.xref);
-    } catch (error) {
-      throw new ConflictException(error);
+    public async create(
+        createGeneXrefDto: CreateGeneXrefDto,
+        user: ActiveUserInterface,
+    ): Promise<GeneXref> {
+        let author = undefined;
+        let gene = undefined;
+        let xref = undefined;
+        try {
+            author = await this.userService.findById(user.sub);
+            gene = await this.geneService.getById(createGeneXrefDto.gene);
+            xref = await this.xrefService.findById(createGeneXrefDto.xref);
+        } catch (error) {
+            throw new ConflictException(error);
+        }
+        const geneXref = this.geneXrefRepository.create({
+            source: createGeneXrefDto.source,
+            status: createGeneXrefDto.status,
+            creator: author,
+            gene: gene,
+            xref: xref,
+        });
+        try {
+            return await this.geneXrefRepository.save(geneXref);
+        } catch (error) {
+            throw new ConflictException(error, {
+                description:
+                    'Gene xref creation failed. Make sure the xref is unique',
+            });
+        }
     }
-    const geneXref = this.geneXrefRepository.create({
-      source: createGeneXrefDto.source,
-      status: createGeneXrefDto.status,
-      creator: author,
-      gene: gene,
-      xref: xref,
-    });
-    try {
-      return await this.geneXrefRepository.save(geneXref);
-    } catch (error) {
-      throw new ConflictException(error, {
-        description: 'Gene xref creation failed. Make sure the xref is unique',
-      });
-    }
-  }
 }

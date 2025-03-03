@@ -11,14 +11,14 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { RoleModule } from 'src/role/role.module';
 
 @Module({
-  controllers: [UserController],
-  providers: [UserService, CreateUserProvider, FindOneUserByEmailProvider],
-  exports: [UserService],
-  imports: [
-    TypeOrmModule.forFeature([User]),
-    ConfigModule.forFeature(profileConfig),
-    forwardRef(() => AuthModule),
-    RoleModule,
-  ],
+    controllers: [UserController],
+    providers: [UserService, CreateUserProvider, FindOneUserByEmailProvider],
+    exports: [UserService],
+    imports: [
+        TypeOrmModule.forFeature([User]),
+        ConfigModule.forFeature(profileConfig),
+        forwardRef(() => AuthModule),
+        RoleModule,
+    ],
 })
 export class UserModule {}

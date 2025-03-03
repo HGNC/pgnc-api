@@ -5,28 +5,28 @@ import { NameDto } from './gene-name/name.dto';
 
 @Exclude()
 export class GeneNameDto {
-  @Expose()
-  geneId: number;
+    @Expose()
+    geneId: number;
 
-  @Expose()
-  nameId: number;
+    @Expose()
+    nameId: number;
 
-  @Expose()
-  type: nomenclatureType;
+    @Expose()
+    type: nomenclatureType;
 
-  @Expose()
-  status: basicStatus;
+    @Expose()
+    status: basicStatus;
 
-  @Expose()
-  creationDate: Date;
+    @Expose()
+    creationDate: Date;
 
-  @Expose()
-  modDate: Date;
+    @Expose()
+    modDate: Date;
 
-  @Expose()
-  withdrawnDate?: Date;
+    @Expose()
+    withdrawnDate?: Date;
 
-  @Expose()
-  @Type(() => NameDto)
-  name: NameDto;
+    @Expose()
+    @Type(() => NameDto)
+    name: NameDto;
 }
