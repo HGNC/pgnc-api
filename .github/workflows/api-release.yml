@@ -362,6 +362,7 @@ jobs:
     needs:
       - calculate_version
       - create_release
+      - validate_inputs
     outputs:
       image_digest: ${{ steps.build.outputs.digest }}
       build_duration_seconds: ${{ steps.duration.outputs.seconds }}
