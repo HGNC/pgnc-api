@@ -5,6 +5,30 @@
 [![PostgreSQL](https://img.shields.io/badge/PostgreSQL-17.0-blue.svg)](https://www.postgresql.org/)
 [![License: AGPL v3](https://img.shields.io/badge/License-AGPL%20v3-blue.svg)](https://www.gnu.org/licenses/agpl-3.0)
 
+## Table of Contents
+
+- [Overview](#overview)
+- [Key Features](#key-features)
+- [Technology Stack](#technology-stack)
+- [Getting Started](#getting-started)
+   - [Quick Start with Docker Compose](#quick-start-with-docker-compose)
+   - [Local Development Workflow](#local-development-workflow)
+- [Authentication](#authentication)
+- [Base URLs](#base-urls)
+- [API Endpoints](#api-endpoints)
+- [Docker Integration](#docker-integration)
+- [Development](#development)
+- [Database & Migrations](#database--migrations)
+- [Configuration](#configuration)
+- [Security](#security)
+- [Error Handling](#error-handling)
+- [Integration](#integration)
+- [Monitoring and Logging](#monitoring-and-logging)
+- [Deployment](#deployment)
+- [Troubleshooting](#troubleshooting)
+- [Contributing](#contributing)
+- [License](#license)
+
 ## Overview
 
 The PGNC REST API provides programmatic access to the PGNC (Plant Gene Nomenclature Committee) gene database. Built with NestJS 10.x, this API enables efficient querying, searching, and management of plant gene nomenclature data through RESTful endpoints.
@@ -22,7 +46,7 @@ The PGNC REST API provides programmatic access to the PGNC (Plant Gene Nomenclat
 ## Technology Stack
 
 - **Framework**: NestJS 10.x
-- **Runtime**: Node.js (LTS)
+- **Runtime**: Node.js 20 LTS (Docker image `node:20-alpine`)
 - **Database**: PostgreSQL 17.0 with TypeORM
 - **Authentication**: JWT tokens with bcrypt password hashing
 - **Documentation**: Swagger/OpenAPI 3.0
@@ -31,11 +55,50 @@ The PGNC REST API provides programmatic access to the PGNC (Plant Gene Nomenclat
 
 ## Getting Started
 
+### Quick Start with Docker Compose
+
+1. **Copy environment template**: `cp sample.env .env`
+2. **Review credentials** in `.env` (database, Solr, mailer, JWT secrets, etc.).
+3. **Launch the full stack**:
+    ```bash
+    docker compose up -d api
+    ```
+    The command pulls up dependencies (PostgreSQL 17, Solr 9.9, Angular, Python pipeline) defined in `docker-compose.yml`.
+4. **Check API health**:
+    ```bash
+    docker compose logs -f api
+    open http://localhost:3000/api/health
+    ```
+
+### Local Development Workflow
+
+- **Prerequisites**
+   - Node.js 20 LTS (match the Docker base image)
+   - PostgreSQL 17.0
+   - A configured `.env` file in the repository root (see step 1 above)
+
+- **Install dependencies**:
+
+   ```bash
+   cd api
+   npm install
+   ```
+
+- **Start a local database** if you are not using Docker Compose. Ensure the credentials in `.env` exist in your PostgreSQL instance.
+
+- **Run the development server** (loads variables from `../.env`):
+
+   ```bash
+   npm run start:dev
+   ```
+
+- **Stop the server** with `Ctrl+C` when finished.
+
 ### Prerequisites
 
-- Node.js (LTS version recommended)
+- Node.js 20 LTS runtime
 - PostgreSQL 17.0 database
-- Environment configuration (`.env` file)
+- Environment configuration (`.env` file in repo root)
 
 ### Installation
 
@@ -113,6 +176,16 @@ docker compose logs -f api
 open http://localhost:3000/api
 ```
 
+Additional helpful targets:
+
+```bash
+# Start everything, including Angular UI and Solr
+docker compose up -d
+
+# Tear the stack down
+docker compose down
+```
+
 ## Development
 
 ### Running Tests
@@ -141,6 +214,8 @@ npm run format
 npm run doc
 ```
 
+The Compodoc server starts on http://localhost:3001 with live reload for local exploration. Exported HTML lives in `api/doc/`.
+
 ### Database Operations
 
 The API uses TypeORM for database operations:
@@ -148,6 +223,26 @@ The API uses TypeORM for database operations:
 - **Auto-sync**: Disabled in production (`DB_SYNC=false`)
 - **Migrations**: Manual migration management
 - **Entities**: Defined in `src/` directories
+
+## Database & Migrations
+
+TypeORM CLI support is configured via `typeorm-cli.sample.config.ts`.
+
+1. Copy the sample to create a working config (git-ignored):
+   ```bash
+   cp typeorm-cli.sample.config.ts typeorm-cli.config.ts
+   ```
+2. Update credentials to match your local or containerized database.
+3. Build the project so compiled entities and migrations exist:
+   ```bash
+   npm run build
+   ```
+4. Run migrations, for example:
+   ```bash
+   npx typeorm-ts-node-commonjs migration:run -d typeorm-cli.config.ts
+   ```
+
+> Note: The Docker Compose workflow uses compiled JavaScript migrations inside the container build step.
 
 ## Configuration
 
@@ -254,6 +349,13 @@ The API is deployed as part of the Docker Compose stack with:
 - **Health monitoring**: Docker health checks
 - **Load balancing**: Nginx reverse proxy
 - **SSL termination**: Let's Encrypt certificates
+
+## Troubleshooting
+
+- **API container fails health check**: Inspect `docker compose logs api` and confirm database credentials in `.env` match the PostgreSQL service.
+- **TypeORM migration errors**: Ensure `npm run build` was executed so compiled entity files exist when running CLI commands.
+- **JWT validation issues**: Regenerate `JWT_SECRET`, `JWT_TOKEN_AUDIENCE`, and `JWT_TOKEN_ISSUER` to match frontend expectations.
+- **Compodoc not reachable**: Check that port 3001 is free locally before running `npm run doc`.
 
 ## Contributing
 
